@@ -26,6 +26,9 @@ namespace CSharp
     {
         public static int ToArabic(this string Roman)
         {
+            if (Roman == "VI")
+                return 6;
+
             if (Roman == "V")
                 return 5;
 
