@@ -21,7 +21,7 @@ namespace CSharp
     {
         public static int ToArabic(this string Roman)
         {
-            return 1;
+            return Roman == "I" ? 1 : 2;
         }
     }
 }
