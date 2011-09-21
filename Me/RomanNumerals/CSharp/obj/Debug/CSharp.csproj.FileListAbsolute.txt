@@ -1,9 +1,0 @@
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\CSharp.dll
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\CSharp.pdb
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\FluentAssertions.dll
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\nunit.framework.dll
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\FluentAssertions.xml
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\bin\Debug\nunit.framework.xml
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\obj\Debug\ResolveAssemblyReference.cache
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\obj\Debug\CSharp.dll
-C:\projects\git\Katas\Me\RomanNumerals\CSharp\obj\Debug\CSharp.pdb
