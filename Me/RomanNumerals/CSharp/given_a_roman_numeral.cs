@@ -20,7 +20,8 @@ namespace CSharp
         [TestCase("IX", 9, TestName = "then IX is converted 9")]
         [TestCase("X", 10, TestName = "then X is converted 10")]
         [TestCase("XI", 11, TestName = "then XI is converted 11")]        
-        [TestCase("XII", 12, TestName = "then XI is converted 12")]        
+        [TestCase("XII", 12, TestName = "then XII is converted 12")]        
+        [TestCase("XIII", 13, TestName = "then XIII is converted 13")]        
         public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic)
         {
             Roman.ToArabic().Should().Be(ExpectedArabic);
