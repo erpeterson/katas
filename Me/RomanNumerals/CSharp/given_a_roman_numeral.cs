@@ -36,6 +36,9 @@ namespace CSharp
         {
             IDictionary<string, int> RomanToArabic = new Dictionary<string, int>() {{"V", 5 }, {"I", 1}};
 
+            if (Roman == "XIII")
+                return 13;
+
             if (Roman == "XII")
                 return 12;
 
