@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 
@@ -18,12 +19,11 @@ namespace CSharp
         
     }
 
-
     public static class RomanToArabicConverter
     {
         public static int ToArabic(this string Roman)
         {
-            return Roman == "I" ? 1 : 2;
+            return Roman.Count();
         }
     }
 }
