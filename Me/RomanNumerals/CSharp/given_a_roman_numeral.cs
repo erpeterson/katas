@@ -34,19 +34,10 @@ namespace CSharp
     {
         public static int ToArabic(this string Roman)
         {
-            IDictionary<string, int> RomanToArabic = new Dictionary<string, int>() {{"V", 5 }, {"I", 1}};
+            IDictionary<string, int> RomanToArabic = new Dictionary<string, int>() {{"V", 5 }, {"I", 1}, {"X", 10}};
 
-            if (Roman == "XIII")
-                return 13;
-
-            if (Roman == "XII")
-                return 12;
-
-            if (Roman == "XI")
-                return 11;
-
-            if (Roman == "X")
-                return 10;
+            if (Roman.StartsWith("X"))
+                return Roman.Sum(x => RomanToArabic[x.ToString()]);
 
             if (Roman == "IX")
                 return 9;
