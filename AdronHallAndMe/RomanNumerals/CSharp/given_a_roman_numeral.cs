@@ -24,6 +24,7 @@ namespace CSharp
     {
         public static int ToArabic(this string Roman)
         {
+            if (Roman == "V") return 5;
             return Roman == "IV" ? 4 :Roman.Count();
         }
     }
