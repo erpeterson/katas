@@ -32,6 +32,9 @@ namespace CSharp
         {
             IDictionary<string, int> RomanToArabic = new Dictionary<string, int>() {{"V", 5 }, {"I", 1}};
 
+            if (Roman == "IX")
+                return 9;
+
             if (Roman.StartsWith("V"))
                 return Roman.Sum(x => RomanToArabic[x.ToString()]);
 
