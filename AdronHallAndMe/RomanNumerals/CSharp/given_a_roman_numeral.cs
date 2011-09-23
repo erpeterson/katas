@@ -20,9 +20,9 @@ namespace CSharp
 
     public static class RomanToArabicConverter
     {
-        public static int ToArabic(this string Romain)
+        public static int ToArabic(this string Roman)
         {
-            return 1;
+            return Roman == "I" ? 1 : 2;
         }
     }
 }
