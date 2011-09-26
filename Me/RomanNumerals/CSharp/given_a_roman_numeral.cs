@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -35,21 +37,28 @@ namespace CSharp
     {
         public static int ToArabic(this string Roman)
         {
-            IDictionary<string, int> RomanToArabic = new Dictionary<string, int>() {{"V", 5 }, {"I", 1}, {"X", 10}};
+            IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5 }, {"X", 10}};
+            IDictionary<string, int> CompoundNumerals = new Dictionary<string, int>{{"IV", 4 }, {"IX", 9}};
 
-            if (Roman == "XIV")
-                return 14;
+            var Total = 0;
+            while (Roman.Length > 0)
+            {
+                var MatchingKey = string.Empty;
+                if (CompoundNumerals.Any(x => Roman.StartsWith(MatchingKey = x.Key)))
+                {
+                    Total += CompoundNumerals[MatchingKey];
+                    Roman = Roman.Remove(0, 2);
+                }
+                else
+                {
+                    Total += SimpleNumerals[Roman.First().ToString()];
+                    Roman = Roman.Remove(0, 1);
+                }
 
-            if (Roman.StartsWith("X"))
-                return Roman.Sum(x => RomanToArabic[x.ToString()]);
+            }
 
-            if (Roman == "IX")
-                return 9;
 
-            if (Roman.StartsWith("V"))
-                return Roman.Sum(x => RomanToArabic[x.ToString()]);
-
-            return Roman == "IV" ? 4 : Roman.Count();
+            return Total;
         }
     }
 }
