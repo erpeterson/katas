@@ -22,6 +22,7 @@ namespace CSharp {
     [TestCase("XIII", 13, TestName = "then XIII is converted 13")]
     [TestCase("XIV", 14, TestName = "then XIV is converted 14")]
     [TestCase("XV", 15, TestName = "then XV is converted 15")]
+    [TestCase("L", 50, TestName = "then L is converted 50")]
     public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic) {
       Roman.ToArabic().Should().Be(ExpectedArabic);
     }
@@ -46,20 +47,6 @@ namespace CSharp {
       }
 
       return Total;
-
-      if (Roman == "XIV")
-        return 14;
-
-      if (Roman.StartsWith("X"))
-        return Roman.Sum(x => SimpleNumerals[x.ToString()]);
-
-      if (Roman == "IX")
-        return 9;
-
-      if (Roman.StartsWith("V"))
-        return Roman.Sum(x => SimpleNumerals[x.ToString()]);
-
-      return Roman == "IV" ? 4 : Roman.Count();
     }
   }
 }
