@@ -1,64 +1,65 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-
 using FluentAssertions;
 using NUnit.Framework;
 
-
-namespace CSharp
-{
-    [TestFixture]
-    public class given_a_roman_numeral
-    {
-        [TestCase("I", 1, TestName = "then I is converted 1")]
-        [TestCase("II", 2, TestName = "then II is converted 2")]
-        [TestCase("III", 3, TestName = "then III is converted 3")]
-        [TestCase("IV", 4, TestName = "then IV is converted 4")]
-        [TestCase("V", 5, TestName = "then V is converted 5")]
-        [TestCase("VI", 6, TestName = "then VI is converted 6")]
-        [TestCase("VII", 7, TestName = "then VII is converted 7")]
-        [TestCase("VIII", 8, TestName = "then VIII is converted 8")]
-        [TestCase("IX", 9, TestName = "then IX is converted 9")]
-        [TestCase("X", 10, TestName = "then X is converted 10")]
-        [TestCase("XI", 11, TestName = "then XI is converted 11")]        
-        [TestCase("XII", 12, TestName = "then XII is converted 12")]        
-        [TestCase("XIII", 13, TestName = "then XIII is converted 13")]        
-        [TestCase("XIV", 14, TestName = "then XIV is converted 14")]        
-        public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic)
-        {
-            Roman.ToArabic().Should().Be(ExpectedArabic);
-        }
-
+namespace CSharp {
+  [TestFixture]
+  public class given_a_roman_numeral {
+    [TestCase("I", 1, TestName = "then I is converted 1")]
+    [TestCase("II", 2, TestName = "then II is converted 2")]
+    [TestCase("III", 3, TestName = "then III is converted 3")]
+    [TestCase("IV", 4, TestName = "then IV is converted 4")]
+    [TestCase("V", 5, TestName = "then V is converted 5")]
+    [TestCase("VI", 6, TestName = "then VI is converted 6")]
+    [TestCase("VII", 7, TestName = "then VII is converted 7")]
+    [TestCase("VIII", 8, TestName = "then VIII is converted 8")]
+    [TestCase("IX", 9, TestName = "then IX is converted 9")]
+    [TestCase("X", 10, TestName = "then X is converted 10")]
+    [TestCase("XI", 11, TestName = "then XI is converted 11")]
+    [TestCase("XII", 12, TestName = "then XII is converted 12")]
+    [TestCase("XIII", 13, TestName = "then XIII is converted 13")]
+    [TestCase("XIV", 14, TestName = "then XIV is converted 14")]
+    [TestCase("XIV", 15, TestName = "then XIV is converted 15")]
+    public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic) {
+      Roman.ToArabic().Should().Be(ExpectedArabic);
     }
+  }
 
+  public static class RomanNumeralConverter {
+    public static int ToArabic(this string Roman) {
+      IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5}, {"X", 10}};
+      IDictionary<string, int> CompoundNumerals = new Dictionary<string, int> {{"IV", 4}, {"IX", 9}};
 
-    public static class RomanNumeralConverter
-    {
-        public static int ToArabic(this string Roman)
-        {
-            IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5 }, {"X", 10}};
-            IDictionary<string, int> CompoundNumerals = new Dictionary<string, int>{{"IV", 4 }, {"IX", 9}};
-
-            var Total = 0;
-            while (Roman.Length > 0)
-            {
-                var MatchingKey = string.Empty;
-                if (CompoundNumerals.Any(x => Roman.StartsWith(MatchingKey = x.Key)))
-                {
-                    Total += CompoundNumerals[MatchingKey];
-                    Roman = Roman.Remove(0, 2);
-                }
-                else
-                {
-                    Total += SimpleNumerals[Roman.First().ToString()];
-                    Roman = Roman.Remove(0, 1);
-                }
-
-            }
-
-
-            return Total;
+      var Total = 0;
+      while (Roman.Length > 0) {
+        var MatchingKey = string.Empty;
+        if (CompoundNumerals.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
+          Total += CompoundNumerals[MatchingKey];
+          Roman = Roman.Remove(0, 2);
         }
+        else {
+          Total += SimpleNumerals[Roman.First().ToString()];
+          Roman = Roman.Remove(0, 1);
+        }
+      }
+
+      return Total;
+
+      if (Roman == "XIV")
+        return 14;
+
+      if (Roman.StartsWith("X"))
+        return Roman.Sum(x => SimpleNumerals[x.ToString()]);
+
+      if (Roman == "IX")
+        return 9;
+
+      if (Roman.StartsWith("V"))
+        return Roman.Sum(x => SimpleNumerals[x.ToString()]);
+
+      return Roman == "IV" ? 4 : Roman.Count();
     }
+  }
 }
