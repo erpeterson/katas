@@ -36,7 +36,7 @@ namespace CSharp {
 
   public static class RomanNumeralConverter {
     public static int ToArabic(this string Roman) {
-      IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5}, {"X", 10}, {"L", 50}, {"C", 100}};
+      IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5}, {"X", 10}, {"L", 50}, {"C", 100}, {"D", 500}};
       IDictionary<string, int> CompoundNumerals = new Dictionary<string, int> {{"IV", 4}, {"IX", 9}, {"XL", 40}, {"XC", 90}};
 
       var Total = 0;
