@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -26,6 +27,7 @@ namespace CSharp {
     [TestCase("L", 50, TestName = "then L is converted 50")]
     [TestCase("XC", 90, TestName = "then XC is converted 90")]
     [TestCase("C", 100, TestName = "then C is converted 100")]
+    [TestCase("CCCLXIX", 369, TestName = "then CCCLXIX is converted 369")]
     public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic) {
       Roman.ToArabic().Should().Be(ExpectedArabic);
     }
@@ -44,7 +46,7 @@ namespace CSharp {
           Roman = Roman.Remove(0, 2);
         }
         else {
-          Total += SimpleNumerals[Roman.First().ToString()];
+          Total += SimpleNumerals[Roman.First().ToString(CultureInfo.InvariantCulture)];
           Roman = Roman.Remove(0, 1);
         }
       }
