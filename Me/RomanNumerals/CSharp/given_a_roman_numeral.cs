@@ -48,7 +48,7 @@ namespace CSharp {
     public static int ToArabic(this string Roman) {      
       if (string.IsNullOrEmpty(Roman)) return 0;
       var Match = Conversions.First(x => Roman.StartsWith(x.Key));
-      return Conversions[Match.Key] + Roman.Remove(0, Match.Key.Length).ToArabic();               
+      return Match.Value + Roman.Remove(0, Match.Key.Length).ToArabic();               
     }
   }
 }
