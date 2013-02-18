@@ -37,20 +37,23 @@ namespace CSharp {
     }
   }
 
+
   public static class RomanNumeralConverter {
+    static readonly IDictionary<string, int> Conversions
+      = new Dictionary<string, int> {
+            {"M", 1000}, {"CM", 900}, {"D", 500}, {"CD", 400}, 
+            {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, 
+            {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
+
     public static int ToArabic(this string Roman) {
-      IDictionary<string, int> Conversions = new Dictionary<string, int> {{"M", 1000}, {"CM", 900}, {"D", 500}, {"CD", 400}, {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
-
-      var Total = 0;
-      while (Roman.Length > 0) {
-        var MatchingKey = string.Empty;
-        if (Conversions.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
-          Total += Conversions[MatchingKey];
-          Roman = Roman.Remove(0, MatchingKey.Length);
-        }
+      if (Roman.Length == 0) return 0;
+            
+      var MatchingKey = string.Empty;
+      if (Conversions.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
+        return Conversions[MatchingKey] + Roman.Remove(0, MatchingKey.Length).ToArabic();          
       }
-
-      return Total;
+        
+      return 0;            
     }
   }
 }
