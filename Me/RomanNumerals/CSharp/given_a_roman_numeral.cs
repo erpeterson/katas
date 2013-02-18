@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
@@ -37,18 +36,18 @@ namespace CSharp {
     }
   }
 
-
   public static class RomanNumeralConverter {
     static readonly IDictionary<string, int> Conversions
       = new Dictionary<string, int> {
-            {"M", 1000}, {"CM", 900}, {"D", 500}, {"CD", 400}, 
-            {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, 
-            {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
+        {"M", 1000}, {"CM", 900}, {"D", 500}, {"CD", 400}, 
+        {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, 
+        {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
 
     public static int ToArabic(this string Roman) {      
       if (string.IsNullOrEmpty(Roman)) return 0;
       var Match = Conversions.First(x => Roman.StartsWith(x.Key));
-      return Match.Value + Roman.Remove(0, Match.Key.Length).ToArabic();               
+      
+      return Match.Value + Roman.Substring(Match.Key.Length).ToArabic();               
     }
   }
 }
