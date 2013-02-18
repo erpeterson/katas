@@ -45,16 +45,10 @@ namespace CSharp {
             {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, 
             {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
 
-    public static int ToArabic(this string Roman) {
-      var Value = 0;
-      if (Roman.Length == 0) return Value;
-            
-      var MatchingKey = string.Empty;
-      if (Conversions.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
-        Value = Conversions[MatchingKey] + Roman.Remove(0, MatchingKey.Length).ToArabic();          
-      }
-        
-      return Value;            
+    public static int ToArabic(this string Roman) {      
+      if (string.IsNullOrEmpty(Roman)) return 0;
+      var Match = Conversions.First(x => Roman.StartsWith(x.Key));
+      return Conversions[Match.Key] + Roman.Remove(0, Match.Key.Length).ToArabic();               
     }
   }
 }
