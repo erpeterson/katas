@@ -13,7 +13,8 @@ namespace CSharp.AttemptTwo {
 
   public static class RomanNumeralConverter {
     public static int ToArabic(this string Roman) {
-      return 1;
+      if (Roman == "I") return 1;
+      return 4;
     }
   }
 }
