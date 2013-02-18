@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -40,19 +39,14 @@ namespace CSharp {
 
   public static class RomanNumeralConverter {
     public static int ToArabic(this string Roman) {
-      IDictionary<string, int> SimpleNumerals = new Dictionary<string, int> {{"I", 1}, {"V", 5}, {"X", 10}, {"L", 50}, {"C", 100}, {"D", 500}, {"M", 1000}};
-      IDictionary<string, int> CompoundNumerals = new Dictionary<string, int> {{"IV", 4}, {"IX", 9}, {"XL", 40}, {"XC", 90}, {"CD", 400}, {"CM", 900}};
+      IDictionary<string, int> Conversions = new Dictionary<string, int> {{"M", 1000}, {"CM", 900}, {"D", 500}, {"CD", 400}, {"C", 100}, {"XC", 90}, {"L", 50}, {"XL", 40}, {"X", 10}, {"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
 
       var Total = 0;
       while (Roman.Length > 0) {
         var MatchingKey = string.Empty;
-        if (CompoundNumerals.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
-          Total += CompoundNumerals[MatchingKey];
-          Roman = Roman.Remove(0, 2);
-        }
-        else {
-          Total += SimpleNumerals[Roman.First().ToString(CultureInfo.InvariantCulture)];
-          Roman = Roman.Remove(0, 1);
+        if (Conversions.Any(x => Roman.StartsWith(MatchingKey = x.Key))) {
+          Total += Conversions[MatchingKey];
+          Roman = Roman.Remove(0, MatchingKey.Length);
         }
       }
 
