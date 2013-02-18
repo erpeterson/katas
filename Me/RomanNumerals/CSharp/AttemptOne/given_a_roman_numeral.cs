@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace CSharp {
+namespace CSharp.AttemptOne {
   [TestFixture]
   public class given_a_roman_numeral {
     [TestCase("I", 1, TestName = "then I is converted to 1")]
