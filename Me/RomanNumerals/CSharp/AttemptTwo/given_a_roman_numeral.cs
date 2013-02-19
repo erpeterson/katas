@@ -19,8 +19,10 @@ namespace CSharp.AttemptTwo {
   }
 
   public static class RomanNumeralConverter {
+    static readonly IDictionary<string, int> Conversions 
+      = new Dictionary<string, int> { { "IX", 9 }, { "V", 5 }, { "IV", 4 }, { "I", 1 } };
+   
     public static int ToArabic(this string Roman) {
-      IDictionary<string, int> Conversions = new Dictionary<string, int> {{"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
       if (string.IsNullOrEmpty(Roman)) return 0;
       var Match = Conversions.FirstOrDefault(x => Roman.StartsWith(x.Key));
 
