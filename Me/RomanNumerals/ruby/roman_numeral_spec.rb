@@ -14,5 +14,6 @@ describe "given a roman numeral" do
 end
 
 def convert(roman)
-  0
+  return 0 if roman.empty?
+  return 1
 end
