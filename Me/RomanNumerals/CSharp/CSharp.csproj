@@ -41,6 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attempt 3\given_a_roman_numeral.cs" />
     <Compile Include="AttemptOne\given_a_roman_numeral.cs" />
     <Compile Include="AttemptTwo\given_a_roman_numeral.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
