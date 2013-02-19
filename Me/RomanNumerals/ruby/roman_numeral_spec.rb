@@ -15,10 +15,12 @@ describe "given a roman numeral" do
   end
 end
 
+Conversions = [["V", 5], ["IV", 4], ["I", 1]]
+
 def convert(roman)
   return 0 if roman.empty?
-  return 5 if roman == "V"
-  return 4 if roman == "IV"
-  return 1 if roman == "I"
+  match = Conversions.find { |x| x[0] == roman }
+  return match[1] if match
+
   return 1 + convert(roman[1, roman.length - 1])
 end
