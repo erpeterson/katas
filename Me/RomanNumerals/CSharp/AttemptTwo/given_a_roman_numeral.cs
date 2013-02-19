@@ -20,8 +20,8 @@ namespace CSharp.AttemptTwo {
     public static int ToArabic(this string Roman) {      
       if(Roman.Equals("IX")) return 9;
       if(Roman.Equals("IV")) return 4;
-      if(Roman.Equals("I")) return 1;           
-      return  1 + "I".ToArabic();
+      if(Roman.Equals("I")) return 1;
+      return  1 + Roman.Substring(1).ToArabic();
     }
   }
 }
