@@ -12,7 +12,7 @@ namespace CSharp.AttemptThree {
 
   public static class RomanNumeralConverter {   
     public static int ToArabic(this string Roman) {
-      return -1;
+      return 0;
     }
   }
 }
