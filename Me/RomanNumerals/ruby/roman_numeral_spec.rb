@@ -5,6 +5,7 @@ describe "given a roman numeral" do
     {
       "" => 0,
       "I" => 1,
+      "II" => 2,
       "IV" => 4,
       "V" => 5
     }.each_pair do |roman, arabic|
