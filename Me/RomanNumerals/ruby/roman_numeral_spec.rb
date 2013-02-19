@@ -17,5 +17,7 @@ end
 
 def convert(roman)
   return 0 if roman.empty?
-  return roman == "IV" ? 4: 1
+  return 5 if roman == "V"
+  return 4 if roman == "IV"
+  return 1
 end
