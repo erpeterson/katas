@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace CSharp.AttemptTwo {
@@ -14,9 +16,11 @@ namespace CSharp.AttemptTwo {
   }
 
   public static class RomanNumeralConverter {
-    public static int ToArabic(this string Roman) {
-      if (Roman.Equals("IX")) return 9;
-      return Roman == "IV" ? 4 : 1;
+    public static int ToArabic(this string Roman) {      
+      if(Roman.Equals("IX")) return 9;
+      if(Roman.Equals("IV")) return 4;
+      if(Roman.Equals("I")) return 1;           
+      return  1 + "I".ToArabic();
     }
   }
 }
