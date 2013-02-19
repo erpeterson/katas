@@ -18,13 +18,11 @@ namespace CSharp.AttemptTwo {
   }
 
   public static class RomanNumeralConverter {
-    public static int ToArabic(this string Roman) {      
-      if(Roman.Equals("IX")) return 9;
-      if(Roman.Equals("V")) return 5;
-      if(Roman.Equals("IV")) return 4;
-      if(Roman.Equals("I")) return 1;
+    public static int ToArabic(this string Roman) {
+      IDictionary<string, int> Conversions = new Dictionary<string, int> {{"IX", 9}, {"V", 5}, {"IV", 4}, {"I", 1}};
+      var Match = Conversions.FirstOrDefault(x => x.Key.Equals(Roman));
 
-      return  1 + Roman.Substring(1).ToArabic();
+      return !string.IsNullOrEmpty(Match.Key) ? Match.Value : 1 + Roman.Substring(1).ToArabic();
     }
   }
 }
