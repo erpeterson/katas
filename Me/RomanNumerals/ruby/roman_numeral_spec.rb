@@ -20,5 +20,6 @@ def convert(roman)
   return 0 if roman.empty?
   return 5 if roman == "V"
   return 4 if roman == "IV"
-  return 1
+  return 1 if roman == "I"
+  return 1 + convert("I")
 end
