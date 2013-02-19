@@ -18,7 +18,9 @@ namespace CSharp.AttemptThree {
     public static int ToArabic(this string Roman) {
       if (string.IsNullOrEmpty(Roman)) return 0;
       if (Roman.Equals("V")) return 5;
-      return Roman.Equals("IV") ? 4 : 1;
+      if (Roman.Equals("IV")) return 4;
+      if (Roman.Equals("I")) return 1;
+      return 2;
     }
   }
 }
