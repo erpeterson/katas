@@ -21,7 +21,7 @@ namespace CSharp.AttemptThree {
       if (Roman.Equals("V")) return 5;
       if (Roman.Equals("IV")) return 4;
       if (Roman.Equals("I")) return 1;
-      return 2;
+      return 1 + Roman.Substring(1).ToArabic();
     }
   }
 }
