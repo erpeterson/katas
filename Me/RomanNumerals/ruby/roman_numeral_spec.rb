@@ -20,8 +20,6 @@ Conversions = [["V", 5], ["IV", 4], ["I", 1]]
 
 def convert(roman)
   return 0 if roman.empty?
-  match = Conversions.find { |x| x[0] == roman }
-  return match[1] if match
-
-  return 1 + convert(roman[1, roman.length - 1])
+  match = Conversions.find { |x| roman.start_with? x[0] }
+  return match[1] + convert(roman[match[0].length, roman.length - 1])
 end
