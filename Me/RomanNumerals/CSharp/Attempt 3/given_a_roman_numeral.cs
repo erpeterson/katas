@@ -23,10 +23,8 @@ namespace CSharp.AttemptThree {
 
     public static int ToArabic(this string Roman) {      
       if (string.IsNullOrEmpty(Roman)) return 0;
-      var Match = Conversions.FirstOrDefault(x => x.Key.Equals(Roman));
-      if (!string.IsNullOrEmpty(Match.Key)) return Match.Value;
-
-      return  1 + Roman.Substring(1).ToArabic();
+      var Match = Conversions.FirstOrDefault(x => Roman.StartsWith(x.Key));     
+      return  Match.Value + Roman.Substring(Match.Key.Length).ToArabic();
     }
   }
 }
