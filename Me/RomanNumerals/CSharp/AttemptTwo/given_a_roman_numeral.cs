@@ -11,6 +11,7 @@ namespace CSharp.AttemptTwo {
     [TestCase("III", 3, TestName = "then III is converted to 3")]
     [TestCase("IV", 4, TestName = "then IV is converted to 4")]
     [TestCase("V", 5, TestName = "then V is converted to 5")]
+    [TestCase("VI", 6, TestName = "then VI is converted to 6")]
     [TestCase("IX", 9, TestName = "then IX is converted to 9")]
     public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic) {
       Roman.ToArabic().Should().Be(ExpectedArabic);
