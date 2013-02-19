@@ -1,5 +1,3 @@
-
-
 describe "given a roman numeral" do
   context "when converting it to an arabic numeral" do
     {
@@ -22,5 +20,5 @@ def convert(roman)
   return 5 if roman == "V"
   return 4 if roman == "IV"
   return 1 if roman == "I"
-  return 1 + convert("I")
+  return 1 + convert(roman[1, roman.length - 1])
 end
