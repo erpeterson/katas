@@ -2,8 +2,13 @@
 
 describe "given a roman numeral" do
   context "when converting it to an arabic numeral" do
-    it "converts an empty string to 0" do
-      expect(convert("")).to eq(0)
+    {
+      "" => 0,
+      "I" => 1
+    }.each_pair do |roman, arabic|
+      it "converts #{roman} string to #{arabic}" do
+        expect(convert(roman)).to eq(arabic)
+      end
     end
   end
 end
