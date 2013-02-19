@@ -7,6 +7,7 @@ namespace CSharp.AttemptThree {
     [TestCase("", 0, TestName = "then '' is converted to 0")]
     [TestCase("I", 1, TestName = "then I is converted to 1")]
     [TestCase("IV", 4, TestName = "then IV is converted to 4")]
+    [TestCase("V", 5, TestName = "then V is converted to 5")]
     public void when_converting_it_to_an_arabic_numeral(string Roman, int ExpectedArabic) {
       Roman.ToArabic().Should().Be(ExpectedArabic);
     }
@@ -14,8 +15,8 @@ namespace CSharp.AttemptThree {
 
   public static class RomanNumeralConverter {   
     public static int ToArabic(this string Roman) {
-      if (Roman.Equals("IV")) return 4;
-      return string.IsNullOrEmpty(Roman) ? 0 : 1;
+      if (string.IsNullOrEmpty(Roman)) return 0;           
+      return Roman.Equals("IV") ? 4 : 1;
     }
   }
 }
