@@ -7,7 +7,8 @@ namespace csharp.AttemptOne
   {
 
     [TestCase(new[] { 2, 5, 7, 8, 9 }, new[] { 2, 5, 6, 7, 8 }, ShowdownOutcome.PlayerOneWins, TestName = "then player one wins because they have the highest card")]
-    public void when_selecting_the_winner_of_a_two_player_showdown(int[] PlayerOnesHand, int[] PlayerTwosHand, ShowdownOutcome ExpectedOutcome)
+    [TestCase(new[] { 2, 3, 6, 8, 9 }, new[] { 3, 4, 5, 8, 10 }, ShowdownOutcome.PlayerTwoWins, TestName = "then player two wins because they have the highest card")]
+    public void when_determining_the_winner_of_a_showdown(int[] PlayerOnesHand, int[] PlayerTwosHand, ShowdownOutcome ExpectedOutcome)
     {
       var Game = new PokerGame();
 
@@ -22,6 +23,7 @@ namespace csharp.AttemptOne
   }
 
   public enum ShowdownOutcome {
-    PlayerOneWins
+    PlayerOneWins,
+    PlayerTwoWins
   }
 }
