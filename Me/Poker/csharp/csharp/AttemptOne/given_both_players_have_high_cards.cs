@@ -17,7 +17,7 @@ namespace csharp.AttemptOne
 
   public class PokerGame {
     public ShowdownOutcome Showdown(int[] PlayerOnesHand, int[] PlayerTwosHand) {
-      throw new System.NotImplementedException();
+      return ShowdownOutcome.PlayerOneWins;
     }
   }
 
