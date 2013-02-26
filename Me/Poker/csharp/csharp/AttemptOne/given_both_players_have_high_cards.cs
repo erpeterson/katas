@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 
 namespace csharp.AttemptOne
 {
@@ -18,7 +19,7 @@ namespace csharp.AttemptOne
 
   public class PokerGame {
     public ShowdownOutcome Showdown(int[] PlayerOnesHand, int[] PlayerTwosHand) {
-      return ShowdownOutcome.PlayerOneWins;
+      return PlayerOnesHand.Max() > PlayerTwosHand.Max() ? ShowdownOutcome.PlayerOneWins : ShowdownOutcome.PlayerTwoWins;
     }
   }
 
