@@ -11,7 +11,7 @@ describe "given only a root node of a binary tree" do
 end
 
 def count_nodes(node)
-
+  1
 end
 
 class Node
