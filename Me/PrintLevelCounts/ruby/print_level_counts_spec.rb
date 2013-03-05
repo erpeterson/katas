@@ -33,6 +33,7 @@ describe "given the root node of a tree" do
     before :all do
       @root = Node.new
       @root.left = Node.new
+      @root.right = Node.new
 
       @counts = count_nodes(@root)
     end
@@ -48,7 +49,15 @@ describe "given the root node of a tree" do
 end
 
 def count_nodes(node)
-  [1, 1]
+  level_counts = []
+
+  level_counts[0] = 1 unless node.nil?
+
+  level_counts[1] = 0
+  level_counts[1] += 1 unless node.left.nil?
+  level_counts[1] += 1 unless node.right.nil?
+
+  level_counts
 end
 
 class Node
