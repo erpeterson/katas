@@ -47,6 +47,30 @@ describe "given the root node of a tree" do
       end
     end
   end
+
+  context "when counting the nodes of a binary tree with two levels" do
+    before :all do
+      @root = Node.new
+      @root.left = Node.new
+      @root.right = Node.new
+      @root.left.left = Node.new
+      @root.left.right = Node.new
+      @root.right.left = Node.new
+      @root.left.left.left = Node.new
+      @counts = count_nodes(@root)
+    end
+
+    {
+     1 => 1,
+     2 => 2,
+     3 => 3,
+     4 => 1
+    }.each_pair do |level, count|
+      it "counts #{count} at level #{level}" do
+        expect(@counts[level - 1]).to eq(count)
+      end
+    end
+  end
 end
 
 def count_nodes(node)
