@@ -31,7 +31,7 @@ describe "given the root node of a tree" do
 end
 
 def count_nodes(node)
-  1
+  [1, 1]
 end
 
 class Node
