@@ -50,14 +50,18 @@ end
 
 def count_nodes(node)
   level_counts = []
-
-  level_counts[0] = 1 unless node.nil?
-
-  level_counts[1] = 0
-  level_counts[1] += 1 unless node.left.nil?
-  level_counts[1] += 1 unless node.right.nil?
-
+  tally(node, 0, level_counts)
   level_counts
+end
+
+def tally(node, level, counts)
+  return if node.nil?
+
+  counts[level] = 0 if(counts[level].nil?)
+
+  counts[level] += 1
+  tally(node.left, level + 1, counts)
+  tally(node.right, level + 1, counts)
 end
 
 class Node
