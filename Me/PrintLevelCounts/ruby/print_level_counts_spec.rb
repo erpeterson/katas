@@ -28,6 +28,23 @@ describe "given the root node of a tree" do
       expect(@counts[1]).to eq(1)
     end
   end
+
+  context "when counting the nodes of a binary tree with two levels" do
+    before :all do
+      @root = Node.new
+      @root.left = Node.new
+
+      @counts = count_nodes(@root)
+    end
+
+    it "counts 1 at level 1" do
+      expect(@counts[0]).to eq(1)
+    end
+
+    it "counts 2 at level 2" do
+      expect(@counts[1]).to eq(2)
+    end
+  end
 end
 
 def count_nodes(node)
