@@ -1,5 +1,4 @@
 describe "given the root node of a tree" do
-
   context "when counting the nodes of a tree with one node" do
     before :all do
       @root = Node.new
@@ -20,12 +19,13 @@ describe "given the root node of a tree" do
       @counts = count_nodes(@root)
     end
 
-    it "counts 1 at level 1" do
-      expect(@counts[0]).to eq(1)
-    end
-
-    it "counts 1 at level 2" do
-      expect(@counts[1]).to eq(1)
+    {
+     1 => 1,
+     2 => 1
+    }.each_pair do |level, count|
+      it "counts #{count} at level #{level}" do
+        expect(@counts[level - 1]).to eq(count)
+      end
     end
   end
 
@@ -38,12 +38,13 @@ describe "given the root node of a tree" do
       @counts = count_nodes(@root)
     end
 
-    it "counts 1 at level 1" do
-      expect(@counts[0]).to eq(1)
-    end
-
-    it "counts 2 at level 2" do
-      expect(@counts[1]).to eq(2)
+    {
+     1 => 1,
+     2 => 2
+    }.each_pair do |level, count|
+      it "counts #{count} at level #{level}" do
+        expect(@counts[level - 1]).to eq(count)
+      end
     end
   end
 end
