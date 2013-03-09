@@ -54,15 +54,10 @@ namespace csharp
             {
                 var number = numbers.Dequeue();
 
-                if (numbers.Any() && numbers.Peek() == 5)
+                if (numbers.Any() && numbers.Peek() > number)
                 {
-                    total += 4;
-                    numbers.Dequeue();
-                }
-                else if (numbers.Any() && numbers.Peek() == 10)
-                {
-                    total += 9;
-                    numbers.Dequeue();
+                    var nextNumber = numbers.Dequeue();
+                    total += (nextNumber - number);
                 }
                 else
                 {
