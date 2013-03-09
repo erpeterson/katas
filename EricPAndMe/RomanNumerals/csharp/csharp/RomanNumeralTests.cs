@@ -8,19 +8,19 @@ namespace csharp
     [TestFixture]
     public class RomanNumeralTests
     {
-         [Test]
-         [TestCase("i", 1)]
+        [Test]
+        [TestCase("i", 1)]
         [TestCase("ii", 2)]
         [TestCase("iv", 4)]
-         [TestCase("v", 5)]
-         public void convertNumeralToArabic(string numeral, int expectedNumber)
-         {
-             var converter = new RomanNumeralConverter();
+        [TestCase("v", 5)]
+        public void ConvertNumeralToArabic(string numeral, int expectedNumber)
+        {
+            var converter = new RomanNumeralConverter();
 
-             var result = converter.ToArabic(numeral);
+            var result = converter.ToArabic(numeral);
 
-             Assert.That(result, Is.EqualTo(expectedNumber));
-         }
+            Assert.That(result, Is.EqualTo(expectedNumber));
+        }
     }
 
 
@@ -44,7 +44,23 @@ namespace csharp
                 }
             }
 
-            var total = numbers.Sum(x => x);
+            var total = 0;
+            while (numbers.Any())
+            {
+                var number = numbers.Dequeue();
+
+
+                if (numbers.Any() && numbers.Peek() == 5)
+                {
+                    total += 4;
+                    numbers.Dequeue();
+                }
+                else
+                {
+                    total += number;
+                }
+                
+            }
 
             return total;
         }
