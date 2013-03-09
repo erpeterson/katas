@@ -30,7 +30,7 @@ namespace csharp
     {
         public int ToArabic(string numeral)
         {
-            var rules = new IRule[] {new IRules(), new VRules() };
+            var rules = new IRule[] {new IRules(), new VRules(), new XRules() };
             var numbers = new Queue<int>();
 
             foreach (var letter in numeral.ToCharArray())
@@ -78,6 +78,19 @@ namespace csharp
             {
                 return 1;
             }
+        }
+    }
+
+    public class XRules : IRule
+    {
+        public bool CanHandle(char letter)
+        {
+            return letter == 'x';
+        }
+
+        public int GetNumber()
+        {
+            return 10;
         }
     }
 
