@@ -7,6 +7,7 @@ namespace csharp
     {
          [Test]
          [TestCase("i", 1)]
+         [TestCase("v", 5)]
          public void convertNumeralToArabic(string numeral, int expectedNumber)
          {
              var converter = new RomanNumeralConverter();
@@ -15,5 +16,14 @@ namespace csharp
 
              Assert.That(result, Is.EqualTo(expectedNumber));
          }
+    }
+
+
+    public class RomanNumeralConverter
+    {
+        public int ToArabic(string numeral)
+        {
+            return 1;
+        }
     }
 }
