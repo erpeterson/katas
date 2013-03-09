@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace csharp
 {
@@ -23,7 +24,15 @@ namespace csharp
     {
         public int ToArabic(string numeral)
         {
-            return 1;
+            switch (numeral)
+            {
+                case "i":
+                    return 1;
+                case "v":
+                    return 5;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
