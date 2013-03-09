@@ -14,6 +14,7 @@ namespace csharp
         [TestCase("iv", 4)]
         [TestCase("v", 5)]
         [TestCase("vi", 6)]
+        [TestCase("x", 10)]
         public void ConvertNumeralToArabic(string numeral, int expectedNumber)
         {
             var converter = new RomanNumeralConverter();
