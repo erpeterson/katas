@@ -8,6 +8,7 @@ namespace csharp
     {
          [Test]
          [TestCase("i", 1)]
+         [TestCase("ii", 2)]
          [TestCase("v", 5)]
          public void convertNumeralToArabic(string numeral, int expectedNumber)
          {
