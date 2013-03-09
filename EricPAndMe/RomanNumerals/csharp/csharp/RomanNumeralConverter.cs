@@ -4,7 +4,7 @@
     {
         public int ToArabic(string numeral)
         {
-            throw new System.NotImplementedException();
+            return 1;
         }
     }
 }
